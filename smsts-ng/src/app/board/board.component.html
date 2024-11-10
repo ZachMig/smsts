@@ -1,0 +1,5 @@
+<div class="board-container">
+  @for ( rowCol of boardArr; track $index) {
+  <tile-component [row]="rowCol.row" [col]="rowCol.col" />
+  }
+</div>
