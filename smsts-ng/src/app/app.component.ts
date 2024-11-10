@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BoardComponent } from './board/board.component';
+import { CoreService } from './core/core.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,12 @@ import { BoardComponent } from './board/board.component';
 })
 export class AppComponent {
   title = 'smsts-ng';
+
+  constructor(public coreService: CoreService) {}
+
+  start() {
+    this.coreService.startGame();
+  }
+
+  restart() {}
 }
