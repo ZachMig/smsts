@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { CoreService } from '../core/core.service';
+import { Tile } from '../types/types';
 
 @Component({
   selector: 'tile-component',
@@ -8,22 +10,19 @@ import { Component, Input } from '@angular/core';
   styleUrl: './tile.component.scss',
 })
 export class TileComponent {
-  @Input() row!: number;
-  @Input() col!: number;
+  @Input() state!: Tile;
 
   displayStr: string = 'Loading Tile...';
 
+  constructor(public coreService: CoreService) {}
+
   onTileClick() {
-    console.log(`Tile Clicked: ${this.displayStr}`);
+    console.log(`Tile Clicked: ${this.state.displayStr}`);
   }
 
-  updateDisplayStr() {
-    this.displayStr = this.row + ' ' + this.col;
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.updateDisplayStr();
+  ngOnChanges() {
+    this.state.updateDisplayStr();
   }
-
-  ngOnChanges() {}
 }

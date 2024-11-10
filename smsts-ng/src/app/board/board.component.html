@@ -1,5 +1,6 @@
 <div class="board-container">
-  @for ( rowCol of boardArr; track $index) {
-  <tile-component [row]="rowCol.row" [col]="rowCol.col" />
-  }
+  @for ( rowCol of boardState; track $index) { @for( tile of rowCol; track
+  $index) {
+  <tile-component [state]="tile" />
+  } }
 </div>

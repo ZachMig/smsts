@@ -6,30 +6,38 @@
 //   marsh = 'Marsh',
 // }
 
-interface TileStateInterface {
+export interface TileState {
   row: number;
   col: number;
   isVisible: boolean;
   isOwned: boolean;
+  displayStr: string;
 }
+//implements TileState {
 
-export class TileState implements TileStateInterface {
+export class Tile {
   row: number;
   col: number;
   isVisible: boolean;
   isOwned: boolean;
-  terrain: string;
+  displayStr!: string;
+  // terrain: string;
 
   constructor(row: number, col: number) {
     this.row = row;
     this.col = col;
-    this.terrain = 'Plains';
+    // this.terrain = 'Plains';
     this.isVisible = false;
     this.isOwned = false;
+    this.updateDisplayStr();
   }
 
   acquireTile() {
+    this.revealTile();
     this.isOwned = true;
+    // console.log(
+    //   `Tile at ${this.row} ${this.col} acquired - Visible: ${this.isVisible} Owned: ${this.isOwned}`
+    // );
   }
 
   loseTile() {
@@ -44,7 +52,15 @@ export class TileState implements TileStateInterface {
     this.isVisible = false;
   }
 
-  changeTerrain(newTerrain: string) {
-    this.terrain = newTerrain;
+  updateDisplayStr() {
+    if (this.isVisible) {
+      this.displayStr = this.row + ' ' + this.col;
+    } else {
+      this.displayStr = 'FOG';
+    }
   }
+
+  // changeTerrain(newTerrain: string) {
+  //   this.terrain = newTerrain;
+  // }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TileComponent } from '../tile/tile.component';
+import { Tile } from '../types/types';
+import { CoreService } from '../core/core.service';
 
 @Component({
   selector: 'board-component',
@@ -14,11 +16,13 @@ export class BoardComponent {
 
   boardArr: { row: number; col: number }[] = [];
 
+  boardState: Tile[][] = [];
+
+  constructor(public coreService: CoreService) {}
+
   ngOnInit() {
-    for (let row = 0; row < this.rows; row++) {
-      for (let col = 0; col < this.cols; col++) {
-        this.boardArr.push({ row, col });
-      }
-    }
+    this.coreService.boardState$.subscribe((state) => {
+      this.boardState = state;
+    });
   }
 }
