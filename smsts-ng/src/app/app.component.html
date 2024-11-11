@@ -1,9 +1,20 @@
 <div class="app-container">
   <div class="control-buttons">
-    <button (click)="start()">Start</button>
-    <button (click)="restart()">Restart</button>
+    <button (click)="start()">Start Game</button>
+    <!-- <button (click)="restart()">Restart</button> -->
+    <button (click)="startRound()">Start Round</button>
+    <button (click)="endTurn()">End Turn</button>
   </div>
+  <div class="user-prompt">
+    <span> {{ userPrompt }}</span>
+  </div>
+  @if (isMenuOpen) {
+  <menu-component />
+  }
   <board-component />
+  <div class="menu-tab">
+    <button (click)="toggleMenu()">MENU</button>
+  </div>
 </div>
 
 <router-outlet />
