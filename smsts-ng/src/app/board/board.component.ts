@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TileComponent } from '../tile/tile.component';
-import { Tile } from '../types/types';
+import { Tile } from '../types/coreTypes';
 import { CoreService } from '../core/core.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CoreService } from '../core/core.service';
-import { Tile } from '../types/types';
+import { Tile } from '../types/coreTypes';
 
 @Component({
   selector: 'tile-component',
